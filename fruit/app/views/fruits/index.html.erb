@@ -1,0 +1,24 @@
+<h1>Our fruits</h1>
+
+
+<table>
+ <tr>
+   <th>name</th>
+   <th>colour</th>
+   <th>price</th>
+ <tr>
+</table>
+
+<% @fruits.each do |fruit| %>
+  <p>
+     <%= fruit.name %>
+     <%= fruit.colour %>
+     <%= fruit. price %> &nbsp; <%= link_to "Show" , fruit %> |
+     <%= link_to "Edit", edit_fruit_path(fruit)%> |
+     <%= link_to "Delete",fruit, :confirm => "Are you Sure?", :method => "Delete"%>
+  </p>
+
+<% end %>
+
+<p><%= link_to "Add a New fruit", new_fruit_path %></p>
+<%= link_to "Sign Out", destroy_member_session_path, :method => :delete %>

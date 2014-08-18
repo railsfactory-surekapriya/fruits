@@ -1,0 +1,47 @@
+<p>
+<strong>Name:</strong>
+<%= @fruit.name %>
+</p>
+<p>
+<strong> Colour:</strong>
+<%= @fruit.colour %>
+</p>
+<p>
+<strong>Price:</strong>
+<%= @fruit.price %>
+</p>
+<h2>Comments</h2>
+<% @fruit.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+<p>
+  <%= link_to 'Destroy Comment', [comment.fruit, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>
+<% end %>
+<h2>Add a comment:</h2>
+<%= form_for([@fruit, @fruit.comments.build]) do |f| %>
+ <p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<p><%= link_to "list of fruits" ,fruits_path %></p>
+<%= link_to 'Edit fruits', edit_fruit_path(@fruit) %>
+<%= link_to "Sign Out", destroy_member_session_path, :method => :delete %>

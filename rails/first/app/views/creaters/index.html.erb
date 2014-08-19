@@ -1,0 +1,11 @@
+<h1>All creaters</h1>
+
+<%= link_to "New creater", new_creater_path %>
+
+<% @creaters.each do |creater| %>
+	<h4>creater ID: <%= creater.id %></h4>
+	<p>creater Name: <%= link_to creater.name, creater_path(creater.id) %></p>
+	<p>creater Description: <%= creater.email %></p>
+
+<% end %>
+

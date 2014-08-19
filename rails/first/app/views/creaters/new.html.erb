@@ -1,0 +1,20 @@
+<h1>New creater</h1>
+
+<%= form_for Creater.new, :html => { :class => "remote_for"} do |f| %>
+  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.number_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br />
+
+<a style="cursor: pointer;" onClick="render_signup_form();"><span> Signup Now</span></a>
+

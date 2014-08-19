@@ -1,0 +1,12 @@
+<% if @user.errors.count == 0 %>
+$('#new_user_link').show()
+$('#edit_user_<%= @user.id %>').remove();
+$('#user_<%= @user.id %>').replaceWith('<%= j render @user %>')
+
+<% else %>
+
+$('#edit_user_<%= @user.id %>').remove();
+$('#new_user_link').after('<%= j render("form") %>');
+
+<% end %>
+

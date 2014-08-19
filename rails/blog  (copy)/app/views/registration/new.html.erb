@@ -1,0 +1,88 @@
+<h2>Sign up</h2>
+
+<%= form_tag(member_registration_path,:method => 'post') %>
+<%= devise_error_messages! %>
+<table>
+
+<tr>
+<td>Username : </td>
+<td><%=text_field_tag "member[username]",@member.username %></td>
+</tr>
+
+<tr>
+<td>DOB: </td>
+<td><%=text_field_tag "member[dateofbirth]",@member.DOB %></td>
+</tr>
+
+<td>Gender: </td>
+<td><%=text_field_tag "member[gender]",@member.gender %></td>
+</tr>
+
+<tr>
+<td>Email : </td>
+<td><%=email_field_tag "member[email]",@member.email %></td>
+</tr>
+
+<tr>
+<td>Password : </td>
+<td><%=password_field_tag "member[password]",@member.password %></td>
+</tr>
+
+<tr>
+<td>Retype password : </td>
+<td><%=password_field_tag "member[password_confirmation]",@member.password_confirmation %></td>
+</tr>
+
+
+
+<tr>
+<td><%= submit_tag nil, :class => "form_submit"%></td>
+</tr>
+</table>
+<br />
+<%= render :partial => "devise/shared/links" %>
+
+
+
+
+
+
+
+
+
+<% form_for @member, :html => { :multipart => true }
+                                              do |f| %>
+  
+  
+    <p>
+      <b> attachment </b><br/>
+     <%= f.file_field :attach %>
+    </p>
+  
+   <p>
+     <b> Picture </b><br/>
+     <%= f.file_field :pic %>
+  </p>
+
+
+
+
+
+
+
+
+<a href="<%= @member.attach.url %> ">
+              <b> File attached </b></a>
+  <br/>
+   
+ 
+  <%= image_tag @member.pic.url %>
+  <br/>
+  # Will the style MEDIUM configured before 
+  in your model
+ <%= image_tag @member.pic.url(:medium) %>
+ <br/>
+  Will the style THUMB configured before 
+  in your model
+ <%= image_tag @member.pic.url(:thumb) %>
+<br/>
